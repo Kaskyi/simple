@@ -7,7 +7,7 @@ var helloRouter = require('./routers/helloRouter');
 const hostname = '127.0.0.1';
 const port = 3000;
 
-app.static('./static/');
+app.static(__dirname.split('\\').join('/') + '/static/');
 
 app.router.use('/', function(req, res) {
     res.end('root');
