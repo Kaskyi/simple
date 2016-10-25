@@ -1,19 +1,13 @@
-var simple = require('../../../');
-
-var router = simple.Router();
-var Static = simple.Static;
+var router = require('../../../').Router();
 
 router.use('/', function(req, res) {
-  console.log(simple.Static);
-  //TODO: simplify 
-    var data = Static.loadFileAsync(simple.Static.root+'index.html');
-    res.writeHead(200, {
-        'Content-Type': 'text/html'
-    });
-    res.end(data);
+    var shortcuts = req.simple.shortcuts;
+    shortcuts.renderHTML('index.html');
+    res.end('');
 });
 
 router.use('/me', function(req, res) {
     res.end('Hello someone');
 });
+
 module.exports = router;
